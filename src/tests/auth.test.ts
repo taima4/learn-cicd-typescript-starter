@@ -9,15 +9,14 @@ describe("getAPIKey", () => {
     expect(getAPIKey(headers)).toBe("correct-key-123");
   });
 
-  test("should throw an error if no Authorization header is present", () => {
-    const headers = {};
-    expect(() => getAPIKey(headers)).toThrow();
-  });
-
-  test("should throw an error if Authorization header is malformed", () => {
-    const headers = {
-      authorization: "NotApiKey some-value"
-    };
-    expect(() => getAPIKey(headers)).toThrow();
-  });
+ test("should return null if no Authorization header is present", () => {
+  const headers = {};
+  expect(getAPIKey(headers)).toBeNull();
+});
+test("should return null if Authorization header is malformed", () => {
+  const headers = {
+    authorization: "WrongPrefix some-key"
+  };
+  expect(getAPIKey(headers)).toBeNull();
+});
 });
