@@ -1,3 +1,7 @@
 #!/bin/bash
 
-CGO_ENABLED=0 GOOS=linux go build -o notely
+# تثبيت المكتبات (Dependencies)
+npm install
+
+# تحويل TypeScript إلى JavaScript (Build)
+npm run build
